@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var controller = require('../controllers/crud.js')
+var controller = require('../controllers/crud')
 
 //model
 var receiver = require("../models/receiver.js")
