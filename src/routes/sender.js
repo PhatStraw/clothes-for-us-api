@@ -7,7 +7,9 @@ var sender = require('../models/sender')
 
 router.get('/', (req, res) => res.send('Hello todo!'))
 
-router.get('/create', controller.create(sender))
-
+router.post('/read', controller.read(sender))
+router.post('/create', controller.create(sender))
+router.post('/update', controller.update(sender))
+router.post('/delete', controller.delete(sender))
 
 module.exports = router
