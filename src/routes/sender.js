@@ -1,15 +1,18 @@
 var express = require('express')
 var router = express.Router()
-var controller = require('../controllers/crud')
+var crud = require('../controllers/crud')
+var shipping = require('../controllers/shipping')
 
 //model
 var sender = require('../models/sender')
 
 router.get('/', (req, res) => res.send('Hello todo!'))
 
-router.post('/read', controller.read(sender))
-router.post('/create', controller.create(sender))
-router.post('/update', controller.update(sender))
-router.post('/delete', controller.delete(sender))
+router.get('/read', crud.read(sender))
+router.post('/create', crud.create(sender))
+router.post('/update', crud.update(sender))
+router.post('/delete', crud.delete(sender))
+
+router.post('/createlabel', shipping.createLabel(sender))
 
 module.exports = router
