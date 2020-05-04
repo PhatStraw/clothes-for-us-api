@@ -7,8 +7,11 @@ var receiverSchema = new Schema({
   streetAddress: String,
   postalCode: String,
   state: String,
-  city: String
+  city: String,
+  password: String,
+  email: String
 })
+
 
 var Receiver = mongoose.model('receiver', receiverSchema)
 

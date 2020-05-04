@@ -9,7 +9,7 @@ const receiver = require("../models/receiver.js")
 
 router.get('/', (req, res) => res.send('Hello receiver!'))
 
-router.post('/create', crud.create(receiver))
+router.post('/signup', crud.create(receiver))
 router.get('/read', authorized, crud.read(receiver))
 router.put('/update', authorized, crud.update(receiver))
 router.post('/delete', authorized, crud.delete(receiver))

@@ -1,12 +1,26 @@
+const bcrypt = require('bcrypt')
+
 module.exports = {
-  create: (model) => async(req,res) => {
+  create: (model) => async( req,res ) => {
     try{
       const { password } = req.body 
-      bcrypt.hash(password, 12, function(err, hash) {
-        const doc =  await model.create({ ...req.body, password: hash })
-        res.status(200).json({ doc })
+      console.log(req.body)
+      if(!password){
+        throw new Error('missing password')
+      }
+
+      bcrypt.hash(password, 12, async function(err, hash) {
+        try{
+          const doc =  await model.create({ ...req.body, password: hash })
+
+          res.status(200).json({ doc })
+        }catch(err){
+          res.status(404).json({ err })
+        }
       })
+
     }catch(err){
+      console.log(err)
       res.status(500).json({ message: err })
     }
   },
